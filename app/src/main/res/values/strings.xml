@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Robot Pattern</string>
+    <string name="login">Login</string>
+    <string name="email_empty">E-mail field is Empty!</string>
+    <string name="password_empty">Password field is Empty!</string>
+    <string name="password_invalid">Password is Invalid!</string>
+</resources>
