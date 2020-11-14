@@ -49,7 +49,7 @@ class LoginActivityTest {
     fun givenPasswordIsEmpty_whenLogin_shouldShowPasswordEmailError(){
         //arrange
         //act
-        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@concrete.com.br"))
+        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@gmail.com"))
         onView(withId(R.id.login)).perform(click())
         //assert
         onView(withText("Password field is Empty!")).check(matches(isDisplayed()))
@@ -59,7 +59,7 @@ class LoginActivityTest {
     fun givenPasswordIsInvalid_whenLogin_shouldShowPasswordIsInvalidError(){
         //arrange
         //act
-        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@concrete.com.br"))
+        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@gmail.com"))
         onView(withId(R.id.password)).perform(typeText("@!56Ab"))
         onView(withId(R.id.login)).perform(click())
         //assert
@@ -72,7 +72,7 @@ class LoginActivityTest {
         intending(hasComponent(HomeActivity::class.java.name))
             .respondWith(Instrumentation.ActivityResult(Activity.RESULT_CANCELED, null))
         //act
-        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@concrete.com.br"))
+        onView(withId(R.id.email)).perform(typeText("daivid.v.leal@gmail.com"))
         onView(withId(R.id.password)).perform(typeText("@!56Ab654"))
         onView(withId(R.id.login)).perform(click())
         //assert
