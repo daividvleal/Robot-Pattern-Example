@@ -28,13 +28,25 @@ class LoginRobotArrange{
 
 class LoginRobotAct {
 
-    fun typeText(text: String, id: Int) {
+    private fun typeText(text: String, id: Int) {
         Espresso.onView(ViewMatchers.withId(id))
             .perform(ViewActions.typeText(text))
     }
 
-    fun click(id: Int) {
+    fun typeEmail(email: String){
+        typeText(email, R.id.email)
+    }
+
+    fun typePassword(password: String){
+        typeText(password, R.id.password)
+    }
+
+    private fun click(id: Int) {
         Espresso.onView(withId(id)).perform(ViewActions.click())
+    }
+
+    fun login(){
+        click(R.id.login)
     }
 
     infix fun act(func: LoginRobotAct.() -> Unit) =
@@ -55,12 +67,24 @@ class LoginRobotAssert {
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
-    fun checkTextOnEditText(text: String, id: Int){
+    private fun checkTextOnEditText(text: String, id: Int){
         Espresso.onView(withId(id))
             .check(ViewAssertions.matches(ViewMatchers.withText(text)))
     }
 
-    fun checkGoTo(activityName: String) {
+    fun checkTextOnEmailField(text: String){
+        checkTextOnEditText(text, R.id.email)
+    }
+
+    fun checkTextOnPasswordField(text: String){
+        checkTextOnEditText(text, R.id.password)
+    }
+
+    private fun checkGoTo(activityName: String) {
         Intents.intended(hasComponent(activityName))
+    }
+
+    fun checkGoToHomeActivity(){
+        checkGoTo(HomeActivity::class.java.name)
     }
 }
